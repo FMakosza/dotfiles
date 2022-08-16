@@ -40,14 +40,16 @@ set showcmd
 
 nmap <leader>j :cnext<CR>
 nmap <leader>k :cprev<CR>
+nmap <leader>c :copen<CR>
 vmap <leader>y :w! /tmp/vimclipboard<CR>
 nmap <leader>p :r! cat /tmp/vimclipboard<CR>
 
 set laststatus=2
 set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-com Gdiff execute "w !git diff --color=always --no-index -- % - | tail -n +3"
+com Gdiff execute "w !git diff --color=always --no-index -- % - | tail -n +3 | less -R"
 com Hgo execute "split | YcmCompleter GoToDeclaration"
 com Vgo execute "vsplit | YcmCompleter GoToDeclaration"
 com Mypy execute "!clear; mypy --strict %"
 
 autocmd FileType python let &makeprg='mypy %'
+nmap <leader>m :make<CR>
