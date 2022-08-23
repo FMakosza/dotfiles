@@ -49,6 +49,7 @@ set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 com Gdiff execute "w !git diff --color=always --no-index -- % - | tail -n +3 | less -R"
 com Hgo execute "split | YcmCompleter GoToDeclaration"
 com Vgo execute "vsplit | YcmCompleter GoToDeclaration"
+com Tgo execute "tab split | YcmCompleter GoToDeclaration"
 com Mypy execute "!clear; mypy --strict %"
 
 autocmd FileType python let &makeprg='mypy %'
