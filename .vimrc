@@ -5,6 +5,7 @@ set textwidth=100
 set showmatch	
 set visualbell
 set nocp
+set cursorline
  
 set hlsearch
 set smartcase
@@ -22,6 +23,9 @@ set ruler
 set undolevels=1000	
 set backspace=indent,eol,start	
 
+set tags+=tags;$HOME
+nmap <leader>] :tab split <CR><c-]>
+
 let mapleader="\\"
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -33,6 +37,7 @@ Plugin 'ycm-core/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
 let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_collect_identifiers_from_tags_files=1
 
 nmap <leader>f <Plug>(YCMFindSymbolInWorkspace)
 nmap <leader>d :YcmCompleter GoToDeclaration<CR>
@@ -42,7 +47,7 @@ nmap <leader>j :cnext<CR>
 nmap <leader>k :cprev<CR>
 nmap <leader>c :copen<CR>
 vmap <leader>y :w! /tmp/vimclipboard<CR>
-nmap <leader>p :r! cat /tmp/vimclipboard<CR>
+nmap <leader>p :r /tmp/vimclipboard<CR>
 
 set laststatus=2
 set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
