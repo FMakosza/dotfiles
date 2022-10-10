@@ -27,7 +27,7 @@ set showcmd
 let mapleader="\\"
 
 " ctags
-set tags+=tags;$HOME
+set tags+=./tags;$HOME
 nmap <leader>] :tab split <CR><c-]>
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -63,7 +63,18 @@ nmap <leader>p :r /tmp/vimclipboard<CR>
 set laststatus=2
 set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
+" Folds
+set foldmethod=indent
+set foldlevel=999
+set foldignore=
+
+" Vimdiff
+hi DiffChange ctermfg=NONE ctermbg=DarkGrey
+
 " Generic commands
+nmap <leader>h :noh<CR>
+nmap <leader>w :%s/\s\+$//e<CR>
+com Et execute "tab split | Explore"
 com Gdiff execute "w !git diff --color=always --no-index -- % - | tail -n +3 | less -R"
 com Mypy execute "!clear; mypy --strict %"
 
@@ -76,3 +87,4 @@ autocmd FileType perl map ]] j0[[%/{<CR>
 autocmd FileType perl map [[ ?{<CR>w99[{
 autocmd FileType perl set shiftwidth=2
 autocmd FileType perl set softtabstop=2
+autocmd FileType perl set tabstop=2
