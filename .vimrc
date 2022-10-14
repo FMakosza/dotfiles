@@ -6,23 +6,35 @@ set showmatch
 set visualbell
 set nocp
 set cursorline
+set scrolloff=10
+
+set nrformats+=alpha
+
+set autoread
+set hidden
  
 set hlsearch
 set smartcase
 set ignorecase	
 set incsearch
+set nojoinspaces
+set formatoptions+=j
+set shortmess-=S
  
 set autoindent	
 set shiftwidth=4	
 set smartindent	
 set smarttab
 set softtabstop=4
+set expandtab
  
 set ruler	
  
+set history=1000
 set undolevels=1000	
 set backspace=indent,eol,start	
 set showcmd
+set wildmenu
 
 let mapleader="\\"
 
@@ -56,8 +68,8 @@ nmap <leader>k :cprev<CR>
 nmap <leader>c :copen<CR>
 
 " Global clipboard
-vmap <leader>y :w! /tmp/vimclipboard<CR>
-nmap <leader>p :r /tmp/vimclipboard<CR>
+vmap <leader>y :w! /tmp/globalclipboard<CR>
+nmap <leader>p :r /tmp/globalclipboard<CR>
 
 " Status line
 set laststatus=2
@@ -74,7 +86,8 @@ hi DiffChange ctermfg=NONE ctermbg=DarkGrey
 " Generic commands
 nmap <leader>h :noh<CR>
 nmap <leader>w :%s/\s\+$//e<CR>
-com Et execute "tab split | Explore"
+nmap <leader>t :tab split<CR>
+com Te execute "tab split | Explore"
 com Gdiff execute "w !git diff --color=always --no-index -- % - | tail -n +3 | less -R"
 com Mypy execute "!clear; mypy --strict %"
 
