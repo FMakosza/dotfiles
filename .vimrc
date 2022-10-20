@@ -56,16 +56,16 @@ let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_collect_identifiers_from_tags_files=1
 
 nmap <leader>f <Plug>(YCMFindSymbolInWorkspace)
-nmap <leader>d :YcmCompleter GoToDeclaration<CR>
+nmap <leader>] :YcmCompleter GoToDeclaration<CR>
 com Hgo execute "split | YcmCompleter GoToDeclaration"
 com Vgo execute "vsplit | YcmCompleter GoToDeclaration"
 com Tgo execute "tab split | YcmCompleter GoToDeclaration"
 
 " Quickfix
 nmap <leader>m :make<CR>
-nmap <leader>j :cnext<CR>
-nmap <leader>k :cprev<CR>
-nmap <leader>c :copen<CR>
+nmap <leader>cj :cnext<CR>
+nmap <leader>ck :cprev<CR>
+nmap <leader>co :copen<CR>
 
 " Global clipboard
 vmap <leader>y :w! /tmp/globalclipboard<CR>
@@ -84,16 +84,20 @@ set foldignore=
 hi DiffChange ctermfg=NONE ctermbg=DarkGrey
 
 " Generic commands
+" disable highlighting
 nmap <leader>h :noh<CR>
+" strip trailing whitespace
 nmap <leader>w :%s/\s\+$//e<CR>
 nmap <leader>t :tab split<CR>
+nmap <leader>b :b#<CR>
+nmap <leader>cc :set cursorcolumn!<CR>
+
 com Te execute "tab split | Explore"
 com Gdiff execute "w !git diff --color=always --no-index -- % - | tail -n +3 | less -R"
 com Mypy execute "!clear; mypy --strict %"
 
 " Python
 autocmd FileType python let &makeprg='mypy %'
-autocmd FileType python nmap <c-]> :YcmCompleter GoToDeclaration<CR>
 
 " Perl
 autocmd FileType perl map ]] j0[[%/{<CR>
