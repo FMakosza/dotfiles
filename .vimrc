@@ -56,10 +56,13 @@ let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_collect_identifiers_from_tags_files=1
 
 nmap <leader>f <Plug>(YCMFindSymbolInWorkspace)
-nmap <leader>] :YcmCompleter GoToDeclaration<CR>
+nmap <leader>d :YcmCompleter GoToDeclaration<CR>
 com Hgo execute "split | YcmCompleter GoToDeclaration"
 com Vgo execute "vsplit | YcmCompleter GoToDeclaration"
 com Tgo execute "tab split | YcmCompleter GoToDeclaration"
+
+" tmux
+vmap <leader>yt :w !tmux load-buffer -<CR>
 
 " Quickfix
 nmap <leader>m :make<CR>
@@ -68,8 +71,8 @@ nmap <leader>ck :cprev<CR>
 nmap <leader>co :copen<CR>
 
 " Global clipboard
-vmap <leader>y :w! /tmp/globalclipboard<CR>
-nmap <leader>p :r /tmp/globalclipboard<CR>
+vmap <leader>yg :w! /tmp/globalclipboard<CR>
+nmap <leader>pg :r /tmp/globalclipboard<CR>
 
 " Status line
 set laststatus=2
