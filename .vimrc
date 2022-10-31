@@ -1,8 +1,7 @@
 set number
-set linebreak	
+set linebreak
 set showbreak=+++
-set textwidth=100
-set showmatch	
+set showmatch
 set visualbell
 set nocp
 set cursorline
@@ -12,41 +11,43 @@ set nrformats+=alpha
 
 set autoread
 set hidden
- 
+
 set hlsearch
 set smartcase
-set ignorecase	
+set ignorecase
 set incsearch
 set nojoinspaces
 set formatoptions+=j
 set shortmess-=S
- 
-set autoindent	
-set shiftwidth=4	
-set smartindent	
+
+set autoindent
+set shiftwidth=4
+set smartindent
 set smarttab
 set softtabstop=4
 set expandtab
- 
-set ruler	
- 
+
+set ruler
+
 set history=1000
-set undolevels=1000	
-set backspace=indent,eol,start	
+set undolevels=1000
+set backspace=indent,eol,start
 set showcmd
 set wildmenu
 
 let mapleader="\\"
+set timeoutlen=5000
 
 " ctags
 set tags+=./tags;$HOME
-nmap <leader>] :tab split <CR><c-]>
+nmap <leader>] :vsplit <CR><c-w>p<c-]>
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'ap/vim-buftabline'
 
 call vundle#end()
 
@@ -84,15 +85,18 @@ set foldlevel=999
 set foldignore=
 
 " Vimdiff
-hi DiffChange ctermfg=NONE ctermbg=DarkGrey
+hi DiffChange ctermfg=NONE ctermbg=LightGrey
+
+" Buffers
+nmap <leader>b :b#<CR>
+nmap <leader>t :bnext<CR>
+nmap <leader>T :bprevious<CR>
 
 " Generic commands
 " disable highlighting
 nmap <leader>h :noh<CR>
 " strip trailing whitespace
 nmap <leader>w :%s/\s\+$//e<CR>
-nmap <leader>t :tab split<CR>
-nmap <leader>b :b#<CR>
 nmap <leader>cc :set cursorcolumn!<CR>
 
 com Te execute "tab split | Explore"
