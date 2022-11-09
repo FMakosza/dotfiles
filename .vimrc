@@ -42,14 +42,16 @@ set timeoutlen=5000
 set tags+=./tags;$HOME
 nmap <leader>] :vsplit <CR><c-w>p<c-]>
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if isdirectory(expand('~')..'/.vim/bundle')
+  set rtp+=~/.vim/bundle/Vundle.vim
+  call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'ycm-core/YouCompleteMe'
-Plugin 'ap/vim-buftabline'
+  Plugin 'VundleVim/Vundle.vim'
+  Plugin 'ycm-core/YouCompleteMe'
+  Plugin 'ap/vim-buftabline'
 
-call vundle#end()
+  call vundle#end()
+endif
 
 " YouCompleteMe
 filetype plugin indent on
@@ -58,8 +60,8 @@ let g:ycm_collect_identifiers_from_tags_files=1
 
 nmap <leader>f <Plug>(YCMFindSymbolInWorkspace)
 nmap <leader>d :YcmCompleter GoToDeclaration<CR>
-com Hgo execute "split | YcmCompleter GoToDeclaration"
-com Vgo execute "vsplit | YcmCompleter GoToDeclaration"
+com Hgo execute "split | wincmd p | YcmCompleter GoToDeclaration"
+com Vgo execute "vsplit | wincmd p | YcmCompleter GoToDeclaration"
 com Tgo execute "tab split | YcmCompleter GoToDeclaration"
 
 " tmux
@@ -91,6 +93,7 @@ hi DiffChange ctermfg=NONE ctermbg=LightGrey
 nmap <leader>b :b#<CR>
 nmap <leader>t :bnext<CR>
 nmap <leader>T :bprevious<CR>
+com Bd execute "bprevious | bdelete #"
 
 " Generic commands
 " disable highlighting
