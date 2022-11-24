@@ -60,6 +60,7 @@ let g:ycm_collect_identifiers_from_tags_files=1
 
 nmap <leader>f <Plug>(YCMFindSymbolInWorkspace)
 nmap <leader>d :YcmCompleter GoToDeclaration<CR>
+com Doc execute "YcmCompleter GetDoc" " Ctrl-w z to close
 com Hgo execute "split | wincmd p | YcmCompleter GoToDeclaration"
 com Vgo execute "vsplit | wincmd p | YcmCompleter GoToDeclaration"
 com Tgo execute "tab split | YcmCompleter GoToDeclaration"
@@ -96,6 +97,9 @@ nmap <leader>T :bprevious<CR>
 com Bd execute "bprevious | bdelete #"
 
 " Generic commands
+" write successfully on both :w and :W
+com W execute "w"
+com Q execute "q"
 " disable highlighting
 nmap <leader>h :noh<CR>
 " strip trailing whitespace
