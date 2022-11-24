@@ -60,7 +60,8 @@ let g:ycm_collect_identifiers_from_tags_files=1
 
 nmap <leader>f <Plug>(YCMFindSymbolInWorkspace)
 nmap <leader>d :YcmCompleter GoToDeclaration<CR>
-com Doc execute "YcmCompleter GetDoc" " Ctrl-w z to close
+" Ctrl-w z to close
+com Doc execute "YcmCompleter GetDoc"
 com Hgo execute "split | wincmd p | YcmCompleter GoToDeclaration"
 com Vgo execute "vsplit | wincmd p | YcmCompleter GoToDeclaration"
 com Tgo execute "tab split | YcmCompleter GoToDeclaration"
