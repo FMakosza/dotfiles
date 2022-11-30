@@ -98,12 +98,14 @@ if &diff
 endif
 
 " Buffers
-nmap <leader>b :b#<CR>
-nmap <leader>t :bnext<CR>
-nmap <leader>T :bprevious<CR>
-com Bd execute "bprevious | bdelete #"
+nmap <leader>b :b#<CR>:checktime<CR>
+nmap <leader>t :bnext<CR>:checktime<CR>
+nmap <leader>T :bprevious<CR>:checktime<CR>
+com Bd execute "bprevious | bdelete # | checktime"
 
 " Generic commands
+" refresh current file
+nmap <F5> :checktime<CR>
 " write successfully on both :w and :W
 com W execute "w"
 com Q execute "q"
