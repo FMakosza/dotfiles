@@ -117,10 +117,11 @@ nmap <leader>cc :set cursorcolumn!<CR>
 
 com Te execute "tab split | Explore"
 com Gdiff execute "w !git diff --color=always --no-index -- % - | tail -n +3 | less -R"
-com Mypy execute "!clear; mypy --strict %"
 
 " Python
-autocmd FileType python let &makeprg='mypy %'
+"autocmd FileType python let &makeprg='mypy %'
+autocmd FileType python com! Mypy execute "cexpr system('mypy --show-column-numbers --no-error-summary ' . shellescape(getcwd()))"
+autocmd FileType python com! Lint execute "cexpr system('pycodestyle --ignore=E501 --exclude=venv ' . shellescape(getcwd()))"
 
 " Perl
 autocmd FileType perl map ]] j0[[%/{<CR>
