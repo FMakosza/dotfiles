@@ -38,6 +38,8 @@ set wildmenu
 let mapleader="\\"
 set timeoutlen=5000
 
+set wildignore+=*/venv/**,*/.mypy_cache/**,*/.git/**,*.swp,*/__pycache__/**
+
 " ctags
 set tags+=./tags;$HOME
 nmap <leader>] :vsplit <CR><c-w>p<c-]>
